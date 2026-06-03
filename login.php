@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
   $username = trim($_POST["username"]);
   $password = $_POST["password"];
 
-  $stmt = $conn->prepare("SELECT id, email, password FROM users WHERE username = ?");
+  $stmt = $conn->prepare("SELECT id, username, email, password FROM users WHERE username = ?");
   $stmt->bind_param("s", $username);
   $stmt->execute();
 
@@ -21,6 +21,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     if(password_verify($password, $user["password"])) {
       $_SESSION["user_id"] = $user["id"];
       $_SESSION["email"] = $user["email"];
+      $_SESSION["username"] = $user["username"];
 
       header("Location: dashboard.php");
       exit();
