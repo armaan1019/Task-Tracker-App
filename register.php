@@ -1,5 +1,51 @@
 <?php 
 require_once "includes/db.php";
+
+$error = "";
+
+if($_SERVER["REQUEST_METHOD"] === "POST") {
+  $username = trim($_POST["username"]);
+  $email = trim($_POST["email"]);
+  $password = $_POST["password"];
+  $confirmPassword = $_POST["confirm_password"];
+
+  if($password != $confirmPassword) {
+    $error = "Passwords do not match.";
+  } else {
+    $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    if($result->num_rows > 0) {
+      $error = "Username already exists.";
+    } else {
+      $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+      $stmt->bind_param("s", $email);
+      $stmt->execute();
+
+      $result = $stmt->get_result();
+
+      if($result->num_rows > 0) {
+        $error = "Email already exists";
+      } else {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUEs (?, ?, ?)");
+        $stmt->bind_param("sss", $username, $email, $password);
+
+        if($stmt->execute()) {
+          header("Location: login.php");
+          exit();
+        } else {
+          $error = "Registration failed.";
+        }
+      }
+    }
+  }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +72,11 @@ require_once "includes/db.php";
   <div class="auth-container">
     <div class="auth-card">
       <h1>Create Account</h1>
+      <?php if(!empty($error)): ?>
+        <div class="error-messsage">
+          <?php echo htmlspecialchars($error); ?>
+        </div>
+      <?php endif; ?>
       <form method="POST">
         <input type="text" name="username" placeholder="Username" required>
         <input type="email" name="email" placeholder="Email" required>
