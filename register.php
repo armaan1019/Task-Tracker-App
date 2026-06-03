@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUEs (?, ?, ?)");
-        $stmt->bind_param("sss", $username, $email, $password);
+        $stmt->bind_param("sss", $username, $email, $hashedPassword);
 
         if($stmt->execute()) {
           header("Location: login.php");
