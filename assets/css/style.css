@@ -96,6 +96,52 @@ footer {
   border-top: 1px solid #ddd;
 }
 
+/* Register.php */
+
+.auth-container {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-card {
+  width: 400px;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: white;
+}
+
+.auth-card h1 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-card input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.auth-card button {
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+}
+
+.auth-card p {
+  text-align: center;
+  margin-top: 1rem;
+}
+
 /* For mobile screens */
 
 @media (max-width: 768px) {
