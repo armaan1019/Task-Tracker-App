@@ -228,7 +228,7 @@ footer {
 
 .task-row {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 12px 0;
   border-bottom: 1px solid #eee;
 }
@@ -237,6 +237,17 @@ footer {
   border-bottom: none;
 }
 
+.task-left {
+  display: flex;
+  gap: 20px;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 2rem 2rem;
+}
 /* For mobile screens */
 
 @media (max-width: 768px) {

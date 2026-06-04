@@ -36,7 +36,7 @@ if(!isset($_SESSION["user_id"])) {
     <a href="Logout.php" class="sidebar-link">Logout</a>
   </aside>
 
-  <main>
+  <main class="main-content">
     <h1>Dashboard</h1>
 
   <section class="welcome-card">
@@ -64,17 +64,26 @@ if(!isset($_SESSION["user_id"])) {
     <h3>Recent Tasks</h3>
     
     <div class="task-row">
-      <span>Study for Math Exam</span>
+      <div class="task-left">
+        <input type="checkbox">
+        <span>Study for Math Exam</span>
+      </div>
       <span>May 20</span>
     </div>
 
     <div class="task-row">
-      <span>Finish History Project</span>
+      <div class="task-left">
+        <input type="checkbox">
+        <span>Finish History Project</span>
+      </div>
       <span>May 22</span>
     </div>
 
     <div class="task-row">
-      <span>Read Chapter 4</span>
+      <div class="task-left">
+        <input type="checkbox">
+        <span>Read Chapter 4</span>
+      </div>
       <span>May 25</span>
     </div>
   </section>
