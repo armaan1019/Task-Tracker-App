@@ -46,28 +46,51 @@ $result = $stmt->get_result();
   </aside>
 
   <main class="main-content">
-    <h1>All Tasks</h1>
+    <div class="tasks-page-header">
+      <h1>All Tasks</h1>
+      <a href="add_task.php" class="btn-primary">+ Add Task</a>
+    </div>
 
-    <p><a href="add_task.php" class="btn-primary">Add Task</a></p>
+    <?php
+      $numOfRows = $result->num_rows;
 
-    <?php if($result->num_rows === 0): ?>
-      <p>No tasks yet.</p>
-    <?php else: ?>
-      <table border="1" cellpadding="8">
-        <tr>
-          <th>Title</th>
-          <th>Due Date</th>
-          <th>Status</th>
-        </tr>
-        <?php while($row = $result->fetch_assoc()): ?>
+      if($numOfRows == 0) {
+        echo "<p class='no-tasks-msg'>No tasks yet.</p>";
+      } else {
+    ?>
+      <div class="task-table-wrap">
+        <table class="task-table">
           <tr>
-            <td><?php echo htmlspecialchars($row["title"]); ?></td>
-            <td><?php echo htmlspecialchars($row["due_date"]); ?></td>
-            <td><?php echo htmlspecialchars($row["status"]); ?></td>
+            <th>Task</th>
+            <th>Due Date</th>
+            <th>Status</th>
           </tr>
-        <?php endwhile; ?>
-      </table>
-    <?php endif; ?>
+          <?php
+            while($numOfRows > 0) {
+              $row = $result->fetch_assoc();
+
+              if($row["status"] == "completed") {
+                $statusClass = "status-completed";
+              } else {
+                $statusClass = "status-active";
+              }
+          ?>
+            <tr>
+              <td><?php echo htmlspecialchars($row["title"]); ?></td>
+              <td><?php echo htmlspecialchars($row["due_date"]); ?></td>
+              <td>
+                <span class="status-pill <?php echo $statusClass; ?>">
+                  <?php echo htmlspecialchars($row["status"]); ?>
+                </span>
+              </td>
+            </tr>
+          <?php
+              $numOfRows--;
+            }
+          ?>
+        </table>
+      </div>
+    <?php } ?>
   </main>
 </div>
 
