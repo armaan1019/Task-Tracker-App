@@ -33,31 +33,51 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Add Task</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <h1>Add Task</h1>
+<nav class="navbar">
+  <div class="logo">TaskTracker</div>
 
-  <?php if(!empty($error)): ?>
-    <p><?php echo htmlspecialchars($error); ?></p>
-  <?php endif; ?>
+  <div class="user-info">
+    <?php echo htmlspecialchars($_SESSION["username"]); ?>
+  </div>
+</nav>
 
-  <form method="POST">
-    <p>
-      Title: <input type="text" name="title" required>
-    </p>
-    <p>
-      Description: <input type="text" name="description">
-    </p>
-    <p>
-      Due Date: <input type="date" name="due_date" required>
-    </p>
-    <button type="submit">Add Task</button>
-  </form>
+<div class="dashboard-layout">
+  <aside class="sidebar">
+    <a href="dashboard.php" class="sidebar-link">Dashboard</a>
+    <a href="tasks.php" class="sidebar-link">Tasks</a>
+    <a href="add_task.php" class="sidebar-link active">Add Task</a>
+    <a href="logout.php" class="sidebar-link">Logout</a>
+  </aside>
 
-  <p><a href="dashboard.php">Back</a></p>
+  <main class="main-content">
+    <h1>Add New Task</h1>
+
+    <section class="welcome-card task-form-card">
+      <?php if(!empty($error)): ?>
+        <div class="error-message">
+          <?php echo htmlspecialchars($error); ?>
+        </div>
+      <?php endif; ?>
+
+      <form method="POST">
+        <input type="text" name="title" placeholder="Task Title" required>
+        <input type="text" name="description" placeholder="Description (optional)">
+        <input type="date" name="due_date" required>
+        <button type="submit" class="btn-primary">Add Task</button>
+      </form>
+
+      <p><a href="tasks.php">Back to Tasks</a></p>
+    </section>
+  </main>
+</div>
 
 </body>
 </html>
