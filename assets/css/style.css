@@ -185,12 +185,7 @@ footer {
   background: #e5e7eb;
 }
 
-.dashboard-main {
-  flex: 1;
-  padding: 2rem;
-}
-
-.dashboard-main h1 {
+.main-content h1 {
   margin-bottom: 1rem;
 }
 
@@ -246,7 +241,7 @@ footer {
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .task-row {
@@ -266,11 +261,9 @@ footer {
 }
 
 .main-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  flex: 1; 
   gap: 24px;
-  padding: 2rem 3rem;
+  padding: 2rem;
 }
 
 /* tasks.php */
