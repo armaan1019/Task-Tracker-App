@@ -11,7 +11,7 @@ require_once "includes/db.php";
 
 $user_id = $_SESSION["user_id"];
 
-$stmt = $conn->prepare("SELECT title, due_date, status FROM tasks WHERE user_id = ?");
+$stmt = $conn->prepare("SELECT id, title, due_date, status FROM tasks WHERE user_id = ?");
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -82,6 +82,11 @@ $result = $stmt->get_result();
                 <span class="status-pill <?php echo $statusClass; ?>">
                   <?php echo htmlspecialchars($row["status"]); ?>
                 </span>
+                <?php if($row["status"] == "active") { ?>
+                  - <a href="toggle_status.php?id=<?php echo $row["id"]; ?>">Mark complete</a>
+                <?php } else { ?>
+                  - <a href="toggle_status.php?id=<?php echo $row["id"]; ?>">Mark active</a>
+                <?php } ?>
               </td>
             </tr>
           <?php
