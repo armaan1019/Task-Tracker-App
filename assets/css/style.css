@@ -181,6 +181,10 @@ footer {
   background: #f4f4f4;
 }
 
+.logout-link {
+  color: #b91c1c;
+}
+
 .active {
   background: #e5e7eb;
 }

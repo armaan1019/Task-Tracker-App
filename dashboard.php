@@ -60,7 +60,7 @@ $completedTasks = $stmt->get_result()->fetch_assoc()["completed"];
     <a href="dashboard.php" class="sidebar-link active">Dashboard</a>
     <a href="tasks.php" class="sidebar-link">Tasks</a>
     <a href="add_task.php" class="sidebar-link">Add Task</a>
-    <a href="Logout.php" class="sidebar-link">Logout</a>
+    <a href="logout.php" class="sidebar-link logout-link">Logout</a>
   </aside>
 
   <main class="main-content">

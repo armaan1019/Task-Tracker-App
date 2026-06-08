@@ -54,7 +54,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     <a href="dashboard.php" class="sidebar-link">Dashboard</a>
     <a href="tasks.php" class="sidebar-link">Tasks</a>
     <a href="add_task.php" class="sidebar-link active">Add Task</a>
-    <a href="logout.php" class="sidebar-link">Logout</a>
+    <a href="logout.php" class="sidebar-link logout-link">Logout</a>
   </aside>
 
   <main class="main-content">
