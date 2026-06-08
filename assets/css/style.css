@@ -322,6 +322,9 @@ footer {
   border-radius: 20px;
   font-size: 0.9rem;
   text-transform: capitalize;
+  text-decoration: none;
+  color: #333;
+  cursor: pointer;
 }
 
 .status-active {

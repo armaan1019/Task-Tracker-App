@@ -79,14 +79,9 @@ $result = $stmt->get_result();
               <td><?php echo htmlspecialchars($row["title"]); ?></td>
               <td><?php echo htmlspecialchars($row["due_date"]); ?></td>
               <td>
-                <span class="status-pill <?php echo $statusClass; ?>">
+                <a href="toggle_status.php?id=<?php echo $row["id"]; ?>" class="status-pill <?php echo $statusClass; ?>">
                   <?php echo htmlspecialchars($row["status"]); ?>
-                </span>
-                <?php if($row["status"] == "active") { ?>
-                  - <a href="toggle_status.php?id=<?php echo $row["id"]; ?>">Mark complete</a>
-                <?php } else { ?>
-                  - <a href="toggle_status.php?id=<?php echo $row["id"]; ?>">Mark active</a>
-                <?php } ?>
+                </a>
               </td>
             </tr>
           <?php
