@@ -85,6 +85,7 @@ $result = $stmt->get_result();
                 </a>
               </td>
               <td>
+                <a href="edit_task.php?id=<?php echo $row["id"]; ?>">Edit</a>
                 <a href="delete_task.php?id=<?php echo $row["id"]; ?>" class="delete-btn" onclick="return confirm('Delete this task?');">Delete</a>
               </td>
             </tr>
