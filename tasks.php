@@ -64,6 +64,7 @@ $result = $stmt->get_result();
             <th>Task</th>
             <th>Due Date</th>
             <th>Status</th>
+            <th>Actions</th>
           </tr>
           <?php
             while($numOfRows > 0) {
@@ -82,6 +83,9 @@ $result = $stmt->get_result();
                 <a href="toggle_status.php?id=<?php echo $row["id"]; ?>" class="status-pill <?php echo $statusClass; ?>">
                   <?php echo htmlspecialchars($row["status"]); ?>
                 </a>
+              </td>
+              <td>
+                <a href="delete_task.php?id=<?php echo $row["id"]; ?>" class="delete-btn" onclick="return confirm('Delete this task?');">Delete</a>
               </td>
             </tr>
           <?php
