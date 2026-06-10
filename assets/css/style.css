@@ -353,6 +353,19 @@ footer {
   background: #fee2e2;
 }
 
+.edit-btn {
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: #2563eb;
+}
+
+.edit-btn:hover {
+  background: #dbeafe;
+}
+
 /* For mobile screens */
 
 @media (max-width: 768px) {
