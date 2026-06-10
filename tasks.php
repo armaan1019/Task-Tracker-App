@@ -26,6 +26,7 @@ $result = $stmt->get_result();
     <title>Tasks</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/js/script.js" defer></script>
 </head>
 <body>
 
@@ -80,7 +81,7 @@ $result = $stmt->get_result();
               <td><?php echo htmlspecialchars($row["title"]); ?></td>
               <td><?php echo htmlspecialchars($row["due_date"]); ?></td>
               <td>
-                <a href="toggle_status.php?id=<?php echo $row["id"]; ?>" class="status-pill <?php echo $statusClass; ?>">
+              <a href="toggle_status.php?id=<?php echo $row["id"]; ?>" class="status-pill toggle-status <?php echo $statusClass; ?>">
                   <?php echo htmlspecialchars($row["status"]); ?>
                 </a>
               </td>

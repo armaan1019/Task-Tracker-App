@@ -94,8 +94,8 @@ $completedTasks = $stmt->get_result()->fetch_assoc()["completed"];
 <?php while($task = $recentTasks->fetch_assoc()): ?>
       <div class="task-row">
         <div class="task-left">
-          <input type="checkbox"<?php $task["status"] === "completed" ? "checked" : ""; ?> disabled>
-          <span><?php echo htmlspecialchars($task["title"]); ?>
+          <input type="checkbox"<?php echo $task["status"] === "completed" ? "checked" : ""; ?> disabled>
+          <span><?php echo htmlspecialchars($task["title"]); ?></span>
         </div>
         <span><?php if($task["due_date"]) {
           echo date("M j, Y", strtotime($task["due_date"]));

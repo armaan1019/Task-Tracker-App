@@ -31,5 +31,11 @@ if($result->num_rows == 1) {
   $stmt->execute();
 }
 
-header("Location: tasks.php");
+header("Content-Type: application/json");
+
+echo json_encode([
+  "success" => true,
+  "status" => $newStatus
+]);
+
 exit();
