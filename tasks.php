@@ -87,7 +87,12 @@ $result = $stmt->get_result();
               </td>
               <td>
                 <a href="edit_task.php?id=<?php echo $row["id"]; ?>" class="edit-btn">Edit</a>
-                <a href="delete_task.php?id=<?php echo $row["id"]; ?>" class="delete-btn" onclick="return confirm('Delete this task?');">Delete</a>
+                <a 
+                  href="#" class="delete-btn open-delete-modal" 
+                  data-task-id="<?php echo $row["id"]; ?>" 
+                  data-task-title="<?php echo htmlspecialchars($row["title"]); ?>">
+                    Delete
+                </a>
               </td>
             </tr>
           <?php
@@ -98,6 +103,18 @@ $result = $stmt->get_result();
       </div>
     <?php } ?>
   </main>
+</div>
+
+<div id="deleteModal" class="modal">
+  <div class="modal-content">
+    <h2>Delete Task</h2>
+    <p>Are you sure you want to delete "<span id="taskTitle"></span>"?</p>
+    
+    <div class="modal-buttons">
+      <button id="cancelDelete">Cancel</button>
+      <a id="confirmDelete" href="#" class="delete-btn">Delete</a>
+    </div>
+  </div>
 </div>
 
 </body>
