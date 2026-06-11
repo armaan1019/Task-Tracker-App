@@ -264,6 +264,21 @@ footer {
   gap: 10px;
 }
 
+.dashboard-task-toggle {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.dashboard-task-toggle input {
+  pointer-events: none;
+}
+
+.task-title-done {
+  text-decoration: line-through;
+  color: #888;
+}
+
 .main-content {
   flex: 1; 
   gap: 24px;

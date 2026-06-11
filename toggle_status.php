@@ -31,6 +31,11 @@ if($result->num_rows == 1) {
   $stmt->execute();
 }
 
+if(isset($_GET["redirect"])) {
+  header("Location: " . $_GET["redirect"]);
+  exit();
+}
+
 header("Content-Type: application/json");
 
 echo json_encode([

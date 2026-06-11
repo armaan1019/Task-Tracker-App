@@ -93,10 +93,12 @@ $completedTasks = $stmt->get_result()->fetch_assoc()["completed"];
     <?php if($recentTasks->num_rows > 0): ?>
 <?php while($task = $recentTasks->fetch_assoc()): ?>
       <div class="task-row">
-        <div class="task-left">
-          <input type="checkbox"<?php echo $task["status"] === "completed" ? "checked" : ""; ?> disabled>
-          <span><?php echo htmlspecialchars($task["title"]); ?></span>
-        </div>
+        <a href="toggle_status.php?id=<?php echo $task["id"]; ?>&redirect=dashboard.php" class="task-left dashboard-task-toggle">
+          <input type="checkbox" <?php if($task["status"] == "completed") { echo "checked"; } ?>>
+          <span <?php if($task["status"] == "completed") { echo 'class="task-title-done"'; } ?>>
+            <?php echo htmlspecialchars($task["title"]); ?>
+          </span>
+        </a>
         <span><?php if($task["due_date"]) {
           echo date("M j, Y", strtotime($task["due_date"]));
         } else {
